@@ -32,7 +32,12 @@ export default function NoticePagination({ totalCount, page }: Props) {
           </PaginationItem>
         ))}
         <PaginationItem>
-          <PaginationNext onClick={() => setSearchParams({ page: `${page + 1}` })} />
+          <PaginationNext
+            onClick={() => {
+              if (page >= totalPage) return;
+              setSearchParams({ page: `${page + 1}` });
+            }}
+          />
         </PaginationItem>
       </PaginationContent>
     </Pagination>

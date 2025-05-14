@@ -13,7 +13,6 @@ import { fileURLToPath } from 'node:url';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 import * as runtime from '@prisma/client/runtime/library';
-import * as $Enums from './enums.js';
 import * as $Class from './internal/class.js';
 import * as Prisma from './internal/prismaNamespace.js';
 

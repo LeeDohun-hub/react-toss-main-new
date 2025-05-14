@@ -1,11 +1,14 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router';
 
 import TossLogo from '~/components/svg/toss-logo.svg?react';
+import { Button } from '~/components/ui/button';
 import { useLanguage } from '~/hooks/use-language';
 import useMediaQuery, { MediaQuery } from '~/hooks/use-media-query';
+import { cn } from '~/lib/utils';
 
 import LangButton from './lang-button';
+import MobileNavSheet from './mobile-nav-sheet';
 import NavButton from './nav-button';
 
 interface NavItem {
@@ -13,7 +16,7 @@ interface NavItem {
   label: string;
 }
 
-const MENU: NavItem[] = [
+export const MENU: NavItem[] = [
   {
     to: '/',
     label: '회사 소개',
@@ -43,18 +46,42 @@ const MENU: NavItem[] = [
 export default function Header() {
   const [language, setLanguage] = useLanguage();
   const isMobile = useMediaQuery(MediaQuery.MOBILE);
-  //Debug
+
+  const [scrolled, setScrolled] = useState(false);
+
   useEffect(() => {
-    console.log('isMobile:', isMobile);
+    const handleScroll = () => {
+      const isScrolled = window.scrollY > 10;
+      if (isScrolled !== scrolled) {
+        setScrolled(isScrolled);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [scrolled]);
+
+  // ? Debug
+  useEffect(() => {
+    console.log('isMobile', isMobile);
   }, [isMobile]);
+
   return (
-    <header className="fixed z-50 h-[60px] w-full bg-white">
+    <header
+      className={cn('fixed z-50 h-[60px] w-full bg-white', scrolled && 'shadow-sm')}
+    >
       <div className="container flex h-full items-center justify-between">
         <Link to="/" className="w-[66px]">
           <TossLogo />
         </Link>
         {isMobile ? (
-          <div>모바일</div>
+          <div className="flex gap-2">
+            <Button>앱 다운로드</Button>
+            <MobileNavSheet />
+          </div>
         ) : (
           <>
             <nav className="flex gap-4">

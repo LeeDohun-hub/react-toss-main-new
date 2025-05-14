@@ -13,6 +13,7 @@ import { fileURLToPath } from 'node:url';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 import * as runtime from '@prisma/client/runtime/library';
+import * as $Enums from './enums.js';
 import * as $Class from './internal/class.js';
 import * as Prisma from './internal/prismaNamespace.js';
 
@@ -40,8 +41,8 @@ export type PrismaClient<
 export { Prisma };
 
 // file annotations for bundling tools to include these files
-path.join(__dirname, 'libquery_engine-darwin-arm64.dylib.node');
-path.join(process.cwd(), 'app/generated/prisma/libquery_engine-darwin-arm64.dylib.node');
+path.join(__dirname, 'query_engine-windows.dll.node');
+path.join(process.cwd(), 'app/generated/prisma/query_engine-windows.dll.node');
 
 /**
  * Model Notice

@@ -20,7 +20,7 @@ const config: runtime.GetPrismaClientConfig = {
       value: 'prisma-client',
     },
     output: {
-      value: '/Users/sjjin/Desktop/edu/react-toss/app/generated/prisma',
+      value: 'C:\\Users\\WORK\\Desktop\\Coding\\react-toss-main\\app\\generated\\prisma',
       fromEnvVar: null,
     },
     config: {
@@ -29,12 +29,13 @@ const config: runtime.GetPrismaClientConfig = {
     binaryTargets: [
       {
         fromEnvVar: null,
-        value: 'darwin-arm64',
+        value: 'windows',
         native: true,
       },
     ],
     previewFeatures: [],
-    sourceFilePath: '/Users/sjjin/Desktop/edu/react-toss/prisma/schema.prisma',
+    sourceFilePath:
+      'C:\\Users\\WORK\\Desktop\\Coding\\react-toss-main\\prisma\\schema.prisma',
     isCustomOutput: true,
   },
   relativePath: '../../../prisma',

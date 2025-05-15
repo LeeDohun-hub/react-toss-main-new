@@ -119,8 +119,8 @@ const FOOTER_TERMS: { label: string; link: string; isBold?: boolean }[][] = [
 export default function Footer() {
   return (
     <footer className="overflow-x-hidden pt-[50px] pb-[100px] desktop:overflow-x-auto">
-      <div className="container px-[67px]">
-        <div className="flex gap-8">
+      <div className="container px-[10px] desktop:px-[67px]">
+        <div className="flex flex-col gap-8 desktop:flex-row">
           {FOOTER_NAV.map((nav, index) => (
             <FooterNav key={index} title={nav.title} data={nav.data} />
           ))}
@@ -146,7 +146,7 @@ export default function Footer() {
             </p>
             <p>고객센터 : 서울특별시 강남구 테헤란로 133, 9층 (역삼동, 한국타이어빌딩)</p>
           </div>
-          <div className="flex gap-8 pt-[24px] pb-[30px]">
+          <div className="flex flex-col pt-[24px] pb-[30px] desktop:flex-row desktop:gap-8">
             {FOOTER_TERMS.map((terms, i) => {
               return (
                 <ul key={i}>

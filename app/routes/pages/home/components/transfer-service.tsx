@@ -5,7 +5,7 @@ import Timer from '~/components/svg/timer.svg?react';
 
 export default function TransferService() {
   return (
-    <section className="h-[1903px] bg-[#f9fafb] desktop:h-[2311px]">
+    <section className="h-auto bg-[#f9fafb] desktop:h-[2311px]">
       <div className="container h-full py-[100px] desktop:py-[250px]">
         <InDropUp className="mb-[80px]">
           <h2 className="mb-[10px] text-[18px] leading-[1.3] font-[700] text-[#3182f6] desktop:mb-[30px] desktop:text-[28px]">

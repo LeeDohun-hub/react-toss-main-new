@@ -9,6 +9,12 @@ export default [
     route('notice/:id', 'routes/pages/notice-details/route.tsx'),
   ]),
 
+  // * Admin
+  ...prefix('admin', [
+    index('routes/pages/admin/route.tsx'),
+    route('login', 'routes/pages/admin-login/route.tsx'),
+  ]),
+
   // * APIs
   ...prefix('api', [
     route('theme', 'routes/apis/theme.ts'),

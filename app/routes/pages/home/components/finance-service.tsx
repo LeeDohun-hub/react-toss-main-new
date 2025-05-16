@@ -8,9 +8,9 @@ export default function FinanceService() {
   const { scrollYProgress } = useScroll({ target: ref, layoutEffect: false });
 
   return (
-    <section className="h-[4232px]" ref={ref}>
-      <div className="relative container pt-[250px]">
-        <h1 className="mb-[140px] text-[60px] leading-[1.4] font-[700] text-[#191f28]">
+    <section className="h-auto desktop:h-[4232px]" ref={ref}>
+      <div className="relative container py-[100px] desktop:pt-[250px]">
+        <h1 className="mb-[140px] text-[36px] leading-[1.4] font-[700] text-[#191f28] desktop:text-[60px]">
           금융을 넘어
           <br />
           일상을 더 편리하게
@@ -33,12 +33,12 @@ export default function FinanceService() {
             startScrollY={0.015}
             endScrollY={0.025}
           >
-            <h2 className="mb-[24px] text-[40px] leading-[1.3] font-[700] text-[#191f28]">
+            <h2 className="mb-[24px] text-[26px] leading-[1.3] font-[700] text-[#191f28] desktop:text-[40px]">
               세금 납부, 등본 발급까지
               <br />
               <span className="text-[#b0b8c1]">토스로 한 번에</span>
             </h2>
-            <p className="text-[20px] leading-[1.5] font-[600] text-[#333d4b]">
+            <p className="text-[18px] leading-[1.5] font-[600] text-[#333d4b] desktop:text-[20px]">
               놓치기 쉬운 세금 납부 및 환급은 물론
               <br />
               발급을 받을 때마다 귀찮았던 주민등록 등초본까지.
@@ -48,7 +48,7 @@ export default function FinanceService() {
           </ScrollOpacity>
         </div>
         {/* 두번째 영역 */}
-        <div className="mb-[220px] flex gap-[40px]">
+        <div className="mb-[220px] flex flex-col gap-[40px] desktop:flex-row">
           <div>
             <ScrollOpacity
               scrollYProgress={scrollYProgress}
@@ -65,7 +65,7 @@ export default function FinanceService() {
               scrollYProgress={scrollYProgress}
               startScrollY={0.5}
               endScrollY={0.8}
-              className="text-[40px] leading-[1.3] font-[700] text-[#191f28]"
+              className="text-[26px] leading-[1.3] font-[700] text-[#191f28] desktop:text-[40px]"
             >
               보험
               <br />
@@ -92,7 +92,7 @@ export default function FinanceService() {
               scrollYProgress={scrollYProgress}
               startScrollY={0.5}
               endScrollY={0.8}
-              className="text-[19px] leading-[1.5] font-[600] text-[#333d4b]"
+              className="text-[18px] leading-[1.5] font-[600] text-[#333d4b] desktop:text-[19px]"
             >
               또래보다 보험료는 적절하게 내고 있는지,
               <br />낸 만큼 보장받고 있는지 확인해 보세요.
@@ -121,14 +121,14 @@ export default function FinanceService() {
             scrollYProgress={scrollYProgress}
             startScrollY={0.95}
             endScrollY={1}
-            className="flex justify-between"
+            className="flex flex-col justify-between gap-[40px] desktop:flex-row desktop:gap-0"
           >
-            <h2 className="text-[40px] leading-[1.3] font-[700] text-[#191f28]">
+            <h2 className="text-[26px] leading-[1.3] font-[700] text-[#191f28] desktop:text-[40px]">
               내 부동산 · 자동차
               <br />
               <span className="text-[#b0b8c1]">정기적으로 관리해보세요</span>
             </h2>
-            <p className="text-[19px] leading-[1.5] font-[600] text-[#333d4b]">
+            <p className="text-[18px] leading-[1.5] font-[600] text-[#333d4b] desktop:text-[19px]">
               집과 자동차의 공통점은 잘 사서, 잘 관리하고, 잘 팔아야 한다는 것.
               <br />
               시세조회부터 아파트 관리비 납부, 자동차 보험료 조회까지 부동산과

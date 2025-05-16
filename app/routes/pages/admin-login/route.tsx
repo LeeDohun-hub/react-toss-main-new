@@ -1,4 +1,6 @@
-import { type ActionFunctionArgs, useActionData } from 'react-router';
+import { type ActionFunctionArgs, redirect } from 'react-router';
+
+import { getAdminAuthSession } from '~/.server/services/session.service';
 
 import { LoginForm } from './components/login-form';
 
@@ -22,11 +24,11 @@ class InvalidException extends Error {
     }
   }
 }
+
 export const action = async ({ request }: ActionFunctionArgs) => {
   try {
     const formData = await request.formData();
     const payload = Object.fromEntries(formData);
-    console.log('payload', payload);
 
     if (payload.email !== ADMIN.email) {
       throw new InvalidException('이메일이 존재하지 않습니다.', 'email');
@@ -37,6 +39,13 @@ export const action = async ({ request }: ActionFunctionArgs) => {
     }
 
     // TODO: 로그인 성공 처리
+    const adminAuthSession = await getAdminAuthSession(request);
+    adminAuthSession.setAdminAuth(payload.email);
+    return redirect('/admin', {
+      headers: {
+        'Set-Cookie': await adminAuthSession.commit(),
+      },
+    });
     return {};
   } catch (error) {
     console.error(error);
@@ -49,8 +58,6 @@ export const action = async ({ request }: ActionFunctionArgs) => {
 };
 
 export default function AdminLogin() {
-  const data = useActionData();
-  console.log('data', data);
   return (
     <div className="flex min-h-svh w-full items-center justify-center p-6 md:p-10">
       <div className="w-full max-w-sm">

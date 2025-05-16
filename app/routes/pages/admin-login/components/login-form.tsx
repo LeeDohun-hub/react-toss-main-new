@@ -17,6 +17,7 @@ export function LoginForm({
   ...props
 }: React.ComponentPropsWithoutRef<'div'>) {
   const data = useActionData();
+
   return (
     <div className={cn('flex flex-col gap-6', className)} {...props}>
       <Card>
@@ -37,7 +38,7 @@ export function LoginForm({
                   required
                 />
                 {data?.path === 'email' && (
-                  <p className="text-destructive"> {data?.message}</p>
+                  <p className="text-destructive">{data?.message}</p>
                 )}
               </div>
               <div className="grid gap-2">
@@ -46,7 +47,7 @@ export function LoginForm({
                 </div>
                 <Input id="password" type="password" name="password" required />
                 {data?.path === 'password' && (
-                  <p className="text-destructive"> {data?.message}</p>
+                  <p className="text-destructive">{data.message}</p>
                 )}
               </div>
               <Button type="submit" className="w-full">

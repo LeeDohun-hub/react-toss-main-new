@@ -50,3 +50,28 @@ export const getThemeSession = async (request: Request) => {
     commit: () => themeStorage.commitSession(session),
   };
 };
+
+// 관리자 로그인 세션
+export const getAdminAuthSession = async (request: Request) => {
+  const adminAuthStorage = createCookieSessionStorage({
+    cookie: {
+      name: 'admin-auth',
+      secure: true,
+      secrets: [process.env.SESSION_SECRET ?? ''],
+      sameSite: 'lax',
+      path: '/',
+      httpOnly: true,
+    },
+  });
+  const session = await adminAuthStorage.getSession(request.headers.get('Cookie'));
+  return {
+    getAdminAuth: () => {
+      return session.get('email') ?? null;
+    },
+    setAdminAuth: (email: string) => session.set('email', email),
+    commit: () =>
+      adminAuthStorage.commitSession(session, {
+        maxAge: 60 * 60 * 24 * 7, // 7 days
+      }),
+  };
+};

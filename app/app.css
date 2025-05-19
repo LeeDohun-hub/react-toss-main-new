@@ -111,3 +111,9 @@
   opacity: 1;
   transition: 0.5s;
 }
+
+.sidebar-active {
+  & > button {
+    @apply bg-sidebar-accent text-sidebar-accent-foreground;
+  }
+}
